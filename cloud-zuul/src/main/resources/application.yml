@@ -1,0 +1,22 @@
+server:
+  port: 8765
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+spring:
+  application:
+    name: zuul-proxy
+# 当发布至外网时可能会出现zuul连接超时，需要增加下面配置
+ribbon:
+  ReadTimeout: 60000  # 单位毫秒数
+  SocketTimeout: 60000
+
+zuul:
+  routes:   #路由
+    api-a:
+      path: /ribbon/**    #访问路径一  访问localhost:8769/ribbon/hi是访问ribbon
+      serviceId: maintain-ribbon-consumer   # ribbon注册在eureka的服务名
+    api-b:
+      path: /feign/**      #/访问路径二  访问localhost:8769/feign/hi是访问feign
+      serviceId: maintain-feign-consumer    # //feign注册在eureka的服务名
