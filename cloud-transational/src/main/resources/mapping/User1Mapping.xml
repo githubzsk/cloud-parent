@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xintong.cloudtransational.mapper.User1Mapper">
+
+    <update id="updateUser1" parameterType="com.xintong.cloudtransational.entity.User1">
+        UPDATE
+            user1 a
+        set
+            <if test="name != null and name != '' ">
+                a.name  = #{name} ,
+            </if>
+            a.id = #{id}
+         where
+            a.id = #{id}
+    </update>
+    <select id="findUser1ById" parameterType="int" resultType="com.xintong.cloudtransational.entity.User1">
+        SELECT a.id,a.`name` FROM user1 a WHERE a.id = #{id}
+    </select>
+
+
+</mapper>

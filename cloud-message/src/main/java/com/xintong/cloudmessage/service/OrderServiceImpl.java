@@ -6,6 +6,9 @@ import com.xintong.cloudmessage.model.Order;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Isolation;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.UUID;
 
@@ -19,6 +22,7 @@ public class OrderServiceImpl implements IOrderService {
     private IMessageService messageService;
 
     @Override
+    @Transactional(isolation = Isolation.DEFAULT,propagation = Propagation.REQUIRES_NEW)
     public Order createOrder(Order order) {
         if (order == null){
             throw new RuntimeException("不能为空");
