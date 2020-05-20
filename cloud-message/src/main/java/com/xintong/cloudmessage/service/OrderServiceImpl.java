@@ -34,6 +34,11 @@ public class OrderServiceImpl implements IOrderService {
         //创建订单前 初始化消息
         messageService.recMessage(new Message(Constants.MessageStatus.INIT,orderId,Constants.BizType.ORDER_PRODUCT_STOCK,null));
         log.debug("orderID:{}",orderId);
+        //产生订单
+        Order o = new Order();
+        orderService.createOrder(o);
+        //确认创建完毕，更改状态，往消息队列中发送一个消息，表示这边执行完毕
+        messageService.recMessage(new Message(Constants.MessageStatus.SENT,orderId,Constants.BizType.ORDER_PRODUCT_STOCK,o.toString()));
 
 
         return null;
