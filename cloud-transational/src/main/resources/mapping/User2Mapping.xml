@@ -2,20 +2,22 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xintong.cloudtransational.mapper.User2Mapper">
 
-    <update id="updateUser2" parameterType="com.xintong.cloudtransational.entity.User2">
-        UPDATE
-            user2 a
-        set
-            <if test="name != null and name != '' ">
-                a.name  = #{name} ,
-            </if>
-            a.id = #{id}
-         where
-            a.id = #{id}
-    </update>
-    <select id="findUser2ById" parameterType="int" resultType="com.xintong.cloudtransational.entity.User2">
+<!--    <update id="updateUser2" parameterType="com.xintong.cloudtransational.entity.User2">-->
+<!--        UPDATE-->
+<!--            user2 a-->
+<!--        set-->
+<!--            <if test="name != null and name != '' ">-->
+<!--                a.name  = #{name} ,-->
+<!--            </if>-->
+<!--            a.id = #{id}-->
+<!--         where-->
+<!--            a.id = #{id}-->
+<!--    </update>-->
+    <select id="selectByPrimaryKey" parameterType="int" resultType="com.xintong.cloudtransational.entity.User2">
         SELECT a.id,a.`name` FROM user2 a WHERE a.id = #{id}
     </select>
-
+    <insert id="insert" parameterType="com.xintong.cloudtransational.entity.User2">
+            INSERT into user2(`name`) VALUES(#{name})
+    </insert>
 
 </mapper>

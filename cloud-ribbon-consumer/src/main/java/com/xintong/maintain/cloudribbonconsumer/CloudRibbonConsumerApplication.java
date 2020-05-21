@@ -1,5 +1,6 @@
 package com.xintong.maintain.cloudribbonconsumer;
 
+import com.netflix.loadbalancer.IRule;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.loadbalancer.LoadBalanced;
@@ -10,6 +11,8 @@ import org.springframework.web.client.RestTemplate;
 @SpringBootApplication
 @EnableEurekaClient
 public class CloudRibbonConsumerApplication {
+
+    private IRule rule;
 
     public static void main(String[] args) {
         SpringApplication.run(CloudRibbonConsumerApplication.class, args);

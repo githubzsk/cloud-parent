@@ -2,20 +2,34 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xintong.cloudtransational.mapper.User1Mapper">
 
-    <update id="updateUser1" parameterType="com.xintong.cloudtransational.entity.User1">
-        UPDATE
-            user1 a
-        set
-            <if test="name != null and name != '' ">
-                a.name  = #{name} ,
-            </if>
-            a.id = #{id}
-         where
-            a.id = #{id}
-    </update>
-    <select id="findUser1ById" parameterType="int" resultType="com.xintong.cloudtransational.entity.User1">
+<!--    <update id="updateUserName" >-->
+<!--        UPDATE-->
+<!--            user1 a-->
+<!--        set-->
+<!--            <if test="userName != null and userName != '' ">-->
+<!--                a.name  = #{userName} ,-->
+<!--            </if>-->
+<!--            a.id = #{id}-->
+<!--         where-->
+<!--            a.id = #{id}-->
+<!--    </update>-->
+<!--    <update id="updateUserAge" >-->
+<!--        UPDATE-->
+<!--        user1 a-->
+<!--        set-->
+<!--        <if test="age != null and age != '' ">-->
+<!--            a.age  = #{age} ,-->
+<!--        </if>-->
+<!--        a.id = #{id}-->
+<!--        where-->
+<!--        a.id = #{id}-->
+<!--    </update>-->
+    <select id="selectByPrimaryKey" parameterType="int" resultType="com.xintong.cloudtransational.entity.User1">
         SELECT a.id,a.`name` FROM user1 a WHERE a.id = #{id}
     </select>
+    <insert id="insert" parameterType="com.xintong.cloudtransational.entity.User1">
+            INSERT into user1(`name`) VALUES(#{name})
+    </insert>
 
 
 </mapper>
