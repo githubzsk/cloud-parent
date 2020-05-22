@@ -17,6 +17,7 @@ public class CController {
     }
     @RequestMapping(value = "/methodPost",method = RequestMethod.POST)
     public String methodPost(String name){
+
      return    restTemplate.postForObject("http://maintain-provider/hello",name,String.class)+" ____Ribbon";
     }
 }

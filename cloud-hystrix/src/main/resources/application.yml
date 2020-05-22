@@ -1,0 +1,14 @@
+server:
+  port: 9100
+spring:
+  application:
+    name: cloud-hystrix-demo
+  security:
+    user:
+      name: root
+      password: zsk615298
+eureka:
+  client:
+    service-url:
+      #defaultZone: http://${spring.security.user.name}:${spring.security.user.password}@localhost:8761/eureka,http://${spring.security.user.name}:${spring.security.user.password}@localhost:8762/eureka
+       defaultZone: http://localhost:8761/eureka,http://localhost:8762/eureka
